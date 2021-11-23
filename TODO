@@ -1,0 +1,9 @@
+
+Todo:
+  ✔ Understand local development of Mask plugin @done(21-09-18 07:54)
+  ☐ Integrating Zora
+    ✘ using hooks @cancelled(21-09-18 07:53) as dataloaders fail to handle setTimeout definition appropriately
+    ☐ Understanding subgraph for fetching data @started(21-09-18 08:32)
+        ☐ Implementation pending
+    ☐ Understanding ZDK to set Bids
+    ☐ Understanding Mask - Place a Bid
