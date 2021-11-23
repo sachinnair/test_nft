@@ -113,6 +113,7 @@ function config(opts: {
                 crypto: 'crypto-browserify',
                 buffer: 'buffer',
                 'text-encoding': '@sinonjs/text-encoding',
+                timers: require.resolve('timers-browserify'),
             },
         },
         module: {

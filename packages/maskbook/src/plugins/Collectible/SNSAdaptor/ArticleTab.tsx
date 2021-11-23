@@ -19,7 +19,7 @@ const useStyles = makeStyles()({
 
 interface AssetPlayerProps {
     src?: string
-    alt: string
+    alt: string | undefined
 }
 
 // opensea supports: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF.

@@ -11,7 +11,12 @@ const RPCCache = new WeakMap<object, object>()
  * @param ref The reference object that must be the same if you're updating.
  */
 export async function getLocalImplementation<T extends object>(name: string, impl: () => T | Promise<T>, ref: object) {
+    // console.log('getLocalImplementation', name)
+    if (name === 'Plugin(com.maskbook.collectibles)') {
+        console.log('CAPTURE', name, ref)
+    }
     const isBackground = isEnvironment(Environment.ManifestBackground)
+    console.log('isBackground', isBackground)
     if (!isBackground) return {}
 
     const isUpdate = RPCCache.has(ref)
@@ -19,7 +24,11 @@ export async function getLocalImplementation<T extends object>(name: string, imp
     RPCCache.set(ref, localImpl)
 
     const result: any = await impl()
+    console.log('result', result, RPCCache)
     for (const key in localImpl) {
+        // if (name === 'Plugin(com.maskbook.collectibles)') {
+        console.log('KEY::: ', key)
+        // }
         if (!Reflect.has(result, key)) {
             delete localImpl[key]
             isUpdate && console.log(`[HMR] ${name}.${key} removed.`)
@@ -28,6 +37,9 @@ export async function getLocalImplementation<T extends object>(name: string, imp
         }
     }
     for (const key in result) {
+        // if (name === 'Plugin(com.maskbook.collectibles)') {
+        console.log('KEY::: ', key)
+        // }
         if (key === 'then') console.error('!!! Do not use "then" as your method name !!!')
         if (!Reflect.has(localImpl, key)) isUpdate && console.log(`[HMR] ${name}.${key} added.`)
         Object.defineProperty(localImpl, key, { configurable: true, enumerable: true, value: result[key] })
@@ -48,6 +60,9 @@ export async function getLocalImplementationExotic<T extends object>(
         {},
         {
             get(_, key) {
+                // if (name === 'Plugin(com.maskbook.collectibles)') {
+                console.log('KEY::: ', key)
+                // }
                 if (key === 'then') return
                 // @ts-ignore
                 return RPCCache.get(ref)?.[key]

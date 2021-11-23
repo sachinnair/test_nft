@@ -59,6 +59,23 @@ export function useOrders(provider: CollectibleProvider, token?: CollectibleToke
                     })
             case CollectibleProvider.RARIBLE:
                 return PluginCollectibleRPC.getOrderFromRarible(token.contractAddress, token.tokenId, side)
+            case CollectibleProvider.TESTONE:
+                const { data: { media: mediaInfo = {} } = {} }: any = await PluginCollectibleRPC.fetchMediaInfo(
+                    token.tokenId,
+                    true,
+                )
+
+                if (side === OrderSide.Buy) {
+                    const { currentBids, inactiveBids } = mediaInfo
+                    const zoraBidsData = [...currentBids, ...inactiveBids]
+                    console.log('zoraBidsData', zoraBidsData)
+                } else if (side === OrderSide.Sell) {
+                    const { currentAsk, inactiveAsk } = mediaInfo
+                    const zoraAskData = [...currentAsk, ...inactiveAsk]
+                    console.log('zoraAskData', zoraAskData)
+                }
+
+                return []
             default:
                 unreachable(provider)
         }

@@ -4,7 +4,7 @@ import Services from '../../extension/service'
 import { Skeleton, SkeletonProps } from '@material-ui/core'
 export interface ImageProps {
     children?: never
-    src: string | Blob
+    src: string | Blob | undefined
     /**
      * Where should the request be sent?
      * `current` means the origin of the current page (which means might be blocked by CSP policy)

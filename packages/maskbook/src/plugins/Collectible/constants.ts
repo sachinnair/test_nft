@@ -27,3 +27,10 @@ export const RaribleIPFSURL = 'https://ipfs.rarible.com/ipfs/'
 export const RaribleUserURL = 'https://rarible.com/user/'
 export const RaribleRopstenUserURL = 'https://ropsten.rarible.com/user/'
 export const RaribleMainnetURL = 'https://api-mainnet.rarible.com/marketplace/api/v4/'
+
+// ZORA
+export const zoraHostnames = ['zora.co']
+// eslint-disable-next-line unicorn/better-regex
+export const zoraPathnameRegexMatcher = /\/([\d\w]+)\/(\d+)/
+
+export const ZORA_GRAPH_API_URL = 'https://api.thegraph.com/subgraphs/name/ourzora/zora-v1'

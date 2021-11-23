@@ -30,6 +30,7 @@ export interface CollectibleToken {
 export enum CollectibleProvider {
     OPENSEA = 0,
     RARIBLE = 1,
+    TESTONE = 2,
 }
 
 export interface NFTAsset {

@@ -48,6 +48,7 @@ export const resolveCollectibleProviderName = createLookupTableResolver<Collecti
     {
         [CollectibleProvider.OPENSEA]: 'OpenSea',
         [CollectibleProvider.RARIBLE]: 'Rarible',
+        [CollectibleProvider.TESTONE]: 'TESTOne',
     },
     (providerType) => {
         throw new Error(`Unknown provider type: ${providerType}.`)

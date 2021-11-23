@@ -15,6 +15,11 @@ const useStyles = makeStyles()({
         height: 16,
         verticalAlign: 'bottom',
     },
+    testone: {
+        width: 16,
+        height: 16,
+        verticalAlign: 'bottom',
+    },
 })
 
 export interface CollectibleProviderIconProps {
@@ -28,6 +33,8 @@ export function CollectibleProviderIcon(props: CollectibleProviderIconProps) {
             return <OpenSeaIcon classes={{ root: classes.opensea }} viewBox="0 0 16 16" />
         case CollectibleProvider.RARIBLE:
             return <RaribleIcon classes={{ root: classes.rarible }} viewBox="0 0 16 16" />
+        case CollectibleProvider.TESTONE:
+            return <RaribleIcon classes={{ root: classes.testone }} viewBox="0 0 16 16" />
         default:
             unreachable(props.provider)
     }

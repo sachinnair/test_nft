@@ -6,6 +6,8 @@ import {
     openseaPathnameRegexMatcher,
     raribleHostnames,
     rariblePathnameRegexMatcher,
+    zoraHostnames,
+    zoraPathnameRegexMatcher,
 } from './constants'
 import { ChainId, formatBalance } from '@masknet/web3-shared'
 
@@ -15,7 +17,8 @@ export function checkUrl(url: string): boolean {
 
     return (
         (openseaHostnames.includes(_url.hostname) && openseaPathnameRegexMatcher.test(_url.pathname)) ||
-        (raribleHostnames.includes(_url.hostname) && rariblePathnameRegexMatcher.test(_url.pathname))
+        (raribleHostnames.includes(_url.hostname) && rariblePathnameRegexMatcher.test(_url.pathname)) ||
+        (zoraHostnames.includes(_url.hostname) && zoraPathnameRegexMatcher.test(_url.pathname))
     )
 }
 
@@ -53,6 +56,16 @@ export function getAssetInfoFromURL(url?: string) {
         }
     }
     //#endregion
+
+    const zoraMatched = _url.pathname.match(zoraPathnameRegexMatcher)
+    console.log('zora', zoraMatched)
+    if (zoraMatched) {
+        return {
+            chain_id: _url.host.includes('testnets') ? ChainId.Rinkeby : ChainId.Mainnet,
+            address: zoraMatched[1],
+            token_id: zoraMatched[2],
+        }
+    }
 
     // nothing matched
     return

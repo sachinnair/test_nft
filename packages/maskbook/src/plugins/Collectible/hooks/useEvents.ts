@@ -119,6 +119,12 @@ export function useEvents(provider: CollectibleProvider, token?: CollectibleToke
                         hasNextPage: false,
                     },
                 }
+            case CollectibleProvider.TESTONE:
+                const zoraTransfers = await PluginCollectibleRPC.getTransfersFromZora(token.tokenId)
+
+                console.log('zoraTransfers', zoraTransfers)
+
+                return { data: [], pageInfo: { hasNextPage: false } }
         }
     }, [chainId, toTokenIdentifier(token), cursor, provider])
 }

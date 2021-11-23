@@ -37,12 +37,15 @@ export async function getProfilesFromRarible(addresses: (string | undefined)[]) 
 }
 
 export async function getNFTItem(tokenAddress: string, tokenId: string) {
+    const l_tokenAddress = '0xf497253c2bb7644ebb99e4d9ecc104ae7a79187a'
+    const l_tokenId = '6719'
+    console.trace()
     const assetResponse = await fetchFromRarible<RaribleNFTItemMapResponse>(
         RaribleChainURL,
-        urlcat('/v0.1/nft/items/:tokenAddress::tokenId', {
+        urlcat('/v0.1/nft/items/:l_tokenAddress::l_tokenId', {
             includeMeta: true,
-            tokenAddress,
-            tokenId,
+            l_tokenAddress,
+            l_tokenId,
         }),
         {
             method: 'GET',

@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import { Button, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@material-ui/core'
 import { makeStyles } from '@masknet/theme'
 import { useI18N } from '../../../../utils'
@@ -40,6 +40,10 @@ export function HistoryTab(props: HistoryTabProps) {
     const { t } = useI18N()
     const { classes } = useStyles()
     const { provider, events, eventPage, setEventPage } = CollectibleState.useContainer()
+
+    useEffect(() => {
+        console.log([provider, events, eventPage])
+    }, [provider, events, eventPage])
 
     //#region If there is a different asset, the unit price and quantity should be displayed
     const isDifferenceToken = useMemo(() => {

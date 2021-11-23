@@ -15,6 +15,8 @@ const sns: Plugin.SNSAdaptor.Definition = {
         const link = uniq(
             usePostInfoDetails.postMetadataMentionedLinks().concat(usePostInfoDetails.postMentionedLinks()),
         ).find(checkUrl)
+
+        // console.log('CHECKING IN HERE', link, usePostInfoDetails.postMentionedLinks())
         const asset = getAssetInfoFromURL(link)
 
         return asset ? renderPostInspector(asset) : null
